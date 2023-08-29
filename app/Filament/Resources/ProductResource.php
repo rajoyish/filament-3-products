@@ -35,7 +35,11 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->sortable(),
+                    ->sortable()
+                    ->money('usd')
+                    ->getStateUsing(function (Product $record): float {
+                        return $record->price / 100;
+                    }),
             ])
             ->defaultSort('price', 'desc')
             ->filters([
