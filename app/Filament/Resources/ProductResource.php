@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
+use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -25,6 +27,15 @@ class ProductResource extends Resource
                     ->unique(ignoreRecord: true),
                 TextInput::make('price')
                     ->required(),
+                Radio::make('status')
+                    ->options([
+                        'in stock' => 'in stock',
+                        'sold out' => 'sold out',
+                        'coming soon' => 'coming soon',
+                    ]),
+                Select::make('category_id')
+                    ->relationship('category', 'name'),
+
             ]);
     }
 
@@ -40,6 +51,8 @@ class ProductResource extends Resource
                     ->getStateUsing(function (Product $record): float {
                         return $record->price / 100;
                     }),
+                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\TextColumn::make('category.name'),
             ])
             ->defaultSort('price', 'desc')
             ->filters([
