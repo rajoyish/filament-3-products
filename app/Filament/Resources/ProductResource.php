@@ -53,16 +53,35 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('price')
                     ->sortable()
                     ->money('usd')
                     ->getStateUsing(function (Product $record): float {
                         return $record->price / 100;
-                    }),
+                    })
+                    ->alignEnd(),
+
                 Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('category.name'),
+
+                Tables\Columns\TextColumn::make('category.name')
+                    ->label('Category name'),
+
                 Tables\Columns\TextColumn::make('tags.name')
-                    ->badge(),
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'summer sale' => 'primary',
+                        'new edition' => 'danger',
+                        'trending' => 'info',
+                        'stock clearance' => 'warning',
+                        'free shipping' => 'gray',
+                        'winter sale' => 'success',
+                    }),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
+                    ->date(),
+
             ])
             ->defaultSort('price', 'desc')
             ->filters([
