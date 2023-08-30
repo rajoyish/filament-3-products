@@ -54,6 +54,8 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->sortable(),
 
+                Tables\Columns\ToggleColumn::make('is_active'),
+
                 Tables\Columns\TextColumn::make('price')
                     ->sortable()
                     ->money('usd')
@@ -62,7 +64,8 @@ class ProductResource extends Resource
                     })
                     ->alignEnd(),
 
-                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\SelectColumn::make('status')
+                    ->options(self::$statuses),
 
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Category name'),
