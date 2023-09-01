@@ -61,7 +61,9 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->sortable(),
 
-                Tables\Columns\ToggleColumn::make('is_active'),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->onColor('success')
+                    ->offColor('danger'),
 
                 Tables\Columns\TextColumn::make('price')
                     ->sortable()
