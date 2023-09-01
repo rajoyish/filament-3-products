@@ -19,6 +19,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Samsung Galaxy S23 Ultra',
@@ -26,6 +27,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Google Pixel 7 Pro',
@@ -33,7 +35,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
-
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'MacBook Pro M2',
@@ -41,7 +43,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
-
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Dell XPS 13 Plus',
@@ -49,6 +51,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Lenovo ThinkPad X1 Carbon Gen 10',
@@ -56,6 +59,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Airpods Pro',
@@ -63,6 +67,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Apple Watch Series 7',
@@ -70,6 +75,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Samsung Galaxy Watch 4',
@@ -77,6 +83,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Google Pixel Buds A-Series',
@@ -84,6 +91,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Nintendo Switch OLED',
@@ -91,6 +99,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'in stock',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'PlayStation 5',
@@ -98,6 +107,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'sold out',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
             [
                 'name' => 'Xbox Series X',
@@ -105,6 +115,7 @@ class ProductSeeder extends Seeder
                 'category_id' => rand(1, 5),
                 'status' => 'sold out',
                 'is_active' => rand(true, false),
+                'description' => fake()->realText(),
             ],
         ];
 

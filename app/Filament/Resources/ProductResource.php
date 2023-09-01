@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -32,7 +33,8 @@ class ProductResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required()
-                    ->unique(ignoreRecord: true),
+                    ->unique(ignoreRecord: true)
+                    ->columnSpanFull(),
                 TextInput::make('price')
                     ->required(),
                 Radio::make('status')
@@ -42,9 +44,12 @@ class ProductResource extends Resource
 
                 Select::make('tags')
                     ->relationship('tags', 'name')
-                    ->multiple(),
+                    ->multiple(), RichEditor::make('description')
+                    ->columnSpanFull()
+                    ->required(),
 
-            ]);
+            ])
+            ->columns(4);
     }
 
     public static function table(Table $table): Table
