@@ -10,6 +10,12 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Grid;
+use Filament\Infolists\Components\Group;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\Split;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -127,6 +133,7 @@ class ProductResource extends Resource
             ->filtersFormColumns(4)
 
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -153,6 +160,50 @@ class ProductResource extends Resource
             'index' => Pages\ListProducts::route('/'),
             'create' => Pages\CreateProduct::route('/create'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
+            'view' => Pages\ViewProduct::route('/{record}'),
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make()
+                    ->schema([
+                        Split::make([
+                            Grid::make(2)
+                                ->schema([
+                                    Group::make([
+                                        TextEntry::make('name'),
+                                        TextEntry::make('price'),
+                                        TextEntry::make('created_at')
+                                            ->badge()
+                                            ->date()
+                                            ->color('success'),
+                                    ]),
+                                    Group::make([
+                                        TextEntry::make('status')
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'in stock' => 'primary',
+                                                'sold out' => 'danger',
+                                                'coming soon' => 'info',
+                                            }),
+                                        TextEntry::make('category.name'),
+                                        TextEntry::make('tags.name')
+                                            ->badge(),
+                                    ]),
+                                ]),
+                        ])->from('lg'),
+                    ]),
+                Section::make('Content')
+                    ->schema([
+                        TextEntry::make('description')
+                            ->prose()
+                            ->markdown()
+                            ->hiddenLabel(),
+                    ])
+                    ->collapsible(),
+            ]);
     }
 }
