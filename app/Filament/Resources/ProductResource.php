@@ -78,7 +78,8 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
 
                 Tables\Columns\ToggleColumn::make('is_active')
                     ->onColor('success')
@@ -90,7 +91,8 @@ class ProductResource extends Resource
                     ->getStateUsing(function (Product $record): float {
                         return $record->price / 100;
                     })
-                    ->alignEnd(),
+                    ->alignEnd()
+                    ->searchable(),
 
                 Tables\Columns\SelectColumn::make('status')
                     ->options(self::$statuses),
