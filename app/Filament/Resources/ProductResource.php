@@ -10,6 +10,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Infolists\Components\Grid;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\Section;
@@ -53,9 +54,17 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->label('Product Name')
                     ->required()
                     ->unique(ignoreRecord: true)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', str()->slug($state)))
                     ->columnSpanFull(),
+
+                TextInput::make('slug')
+                    ->disabledOn('edit')
+                    ->required(),
+
                 TextInput::make('price')
                     ->required(),
                 Radio::make('status')
