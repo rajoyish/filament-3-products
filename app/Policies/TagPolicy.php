@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Order;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OrderPolicy
+class TagPolicy
 {
     use HandlesAuthorization;
 
@@ -17,7 +17,7 @@ class OrderPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_order');
+        return $user->can('view_any_tag');
     }
 
     /**
@@ -25,9 +25,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Order $order): bool
+    public function view(User $user, Tag $tag): bool
     {
-        return $user->can('view_order');
+        return $user->can('view_tag');
     }
 
     /**
@@ -37,7 +37,7 @@ class OrderPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_order');
+        return $user->can('create_tag');
     }
 
     /**
@@ -45,9 +45,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Order $order): bool
+    public function update(User $user, Tag $tag): bool
     {
-        return $user->can('update_order');
+        return $user->can('update_tag');
     }
 
     /**
@@ -55,9 +55,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Order $order): bool
+    public function delete(User $user, Tag $tag): bool
     {
-        return $user->can('delete_order');
+        return $user->can('delete_tag');
     }
 
     /**
@@ -67,7 +67,7 @@ class OrderPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_order');
+        return $user->can('delete_any_tag');
     }
 
     /**
@@ -75,9 +75,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Order $order): bool
+    public function forceDelete(User $user, Tag $tag): bool
     {
-        return $user->can('force_delete_order');
+        return $user->can('force_delete_tag');
     }
 
     /**
@@ -87,7 +87,7 @@ class OrderPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_order');
+        return $user->can('force_delete_any_tag');
     }
 
     /**
@@ -95,9 +95,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Order $order): bool
+    public function restore(User $user, Tag $tag): bool
     {
-        return $user->can('restore_order');
+        return $user->can('restore_tag');
     }
 
     /**
@@ -107,7 +107,7 @@ class OrderPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_order');
+        return $user->can('restore_any_tag');
     }
 
     /**
@@ -115,9 +115,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Order $order): bool
+    public function replicate(User $user, Tag $tag): bool
     {
-        return $user->can('replicate_order');
+        return $user->can('replicate_tag');
     }
 
     /**
@@ -127,6 +127,6 @@ class OrderPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_order');
+        return $user->can('reorder_tag');
     }
 }

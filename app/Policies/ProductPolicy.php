@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OrderPolicy
+class ProductPolicy
 {
     use HandlesAuthorization;
 
@@ -17,7 +17,7 @@ class OrderPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_order');
+        return $user->can('view_any_product');
     }
 
     /**
@@ -25,9 +25,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Order $order): bool
+    public function view(User $user, Product $product): bool
     {
-        return $user->can('view_order');
+        return $user->can('view_product');
     }
 
     /**
@@ -37,7 +37,7 @@ class OrderPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_order');
+        return $user->can('create_product');
     }
 
     /**
@@ -45,9 +45,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Order $order): bool
+    public function update(User $user, Product $product): bool
     {
-        return $user->can('update_order');
+        return $user->can('update_product');
     }
 
     /**
@@ -55,9 +55,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Order $order): bool
+    public function delete(User $user, Product $product): bool
     {
-        return $user->can('delete_order');
+        return $user->can('delete_product');
     }
 
     /**
@@ -67,7 +67,7 @@ class OrderPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_order');
+        return $user->can('delete_any_product');
     }
 
     /**
@@ -75,9 +75,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Order $order): bool
+    public function forceDelete(User $user, Product $product): bool
     {
-        return $user->can('force_delete_order');
+        return $user->can('force_delete_product');
     }
 
     /**
@@ -87,7 +87,7 @@ class OrderPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_order');
+        return $user->can('force_delete_any_product');
     }
 
     /**
@@ -95,9 +95,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Order $order): bool
+    public function restore(User $user, Product $product): bool
     {
-        return $user->can('restore_order');
+        return $user->can('restore_product');
     }
 
     /**
@@ -107,7 +107,7 @@ class OrderPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_order');
+        return $user->can('restore_any_product');
     }
 
     /**
@@ -115,9 +115,9 @@ class OrderPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Order $order): bool
+    public function replicate(User $user, Product $product): bool
     {
-        return $user->can('replicate_order');
+        return $user->can('replicate_product');
     }
 
     /**
@@ -127,6 +127,6 @@ class OrderPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_order');
+        return $user->can('reorder_product');
     }
 }
